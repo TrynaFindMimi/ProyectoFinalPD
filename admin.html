@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - ModaTrend</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>ModaTrend</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="crearVenta.html">Crear Venta</a></li>
+                    <li><a href="verReservas.html">Reservas</a></li>
+                    <li><a href="envios.html">Envíos</a></li>
+                    <li><button id="login-btn" onclick="window.location.href='admin.html'">Iniciar Sesión</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="admin-container">
+            <h1>Panel de Administración</h1>
+            <div class="contenedor-principal">
+                <section class="izquierda">
+                    <div class="reporte-ganancias caja">
+                        <h2>Reporte de Ganancias</h2>
+                        <div class="ganancias-horizontal">
+                            <div class="total-dia total-box">
+                                <canvas id="chart-dia" width="100" height="100"></canvas>
+                                <h3>Total Día</h3>
+                                <p>3,150.00 Bs</p>
+                                <p><strong>QR:</strong> 1,800.00 Bs</p>
+                                <p><strong>Efectivo:</strong> 1,350.00 Bs</p>
+                            </div>
+                            <div class="total-semana total-box">
+                                <canvas id="chart-semana" width="100" height="100"></canvas>
+                                <h3>Total Semana</h3>
+                                <p>15,750.00 Bs</p>
+                                <p><strong>QR:</strong> 9,000.00 Bs</p>
+                                <p><strong>Efectivo:</strong> 6,750.00 Bs</p>
+                            </div>
+                            <div class="total-mes total-box">
+                                <canvas id="chart-mes" width="100" height="100"></canvas>
+                                <h3>Total Mes</h3>
+                                <p>63,000.00 Bs</p>
+                                <p><strong>QR:</strong> 36,000.00 Bs</p>
+                                <p><strong>Efectivo:</strong> 27,000.00 Bs</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="historial-pedidos scroll-view">
+                        <h2>Historial de Pedidos</h2>
+                        <div class="filtro-pedidos">
+                            <input type="text" id="buscar-pedido" placeholder="Buscar por número, vendedor o cliente" aria-label="Buscar pedidos">
+                            <select id="filtro-metodo" aria-label="Filtrar por método de pago">
+                                <option value="">Método de Pago</option>
+                                <option value="QR">QR</option>
+                                <option value="Efectivo">Efectivo</option>
+                            </select>
+                            <select id="filtro-estado" aria-label="Filtrar por estado">
+                                <option value="">Estado</option>
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Completado">Completado</option>
+                            </select>
+                        </div>
+                        <div id="pedidos-lista">
+                            <article class="pedido" data-vendedor="Ana Martínez" data-pedido="001" data-cliente="María López" data-metodo="QR" data-estado="Completado">
+                                <div class="pedido-info">
+                                    <h3>Pedido #001</h3>
+                                    <p><strong>Vendedor:</strong> Ana Martínez</p>
+                                    <p><strong>Cliente:</strong> María López</p>
+                                    <p><strong>Método:</strong> QR</p>
+                                    <p><strong>Estado:</strong> Completado</p>
+                                    <p><strong>Total:</strong> 880.00 Bs</p>
+                                </div>
+                                <button class="btn-ver-mas" aria-label="Ver más información del pedido 001">Ver más info</button>
+                            </article>
+                            <article class="pedido" data-vendedor="Juan Pérez" data-pedido="002" data-cliente="Carlos Gómez" data-metodo="Efectivo" data-estado="Pendiente">
+                                <div class="pedido-info">
+                                    <h3>Pedido #002</h3>
+                                    <p><strong>Vendedor:</strong> Juan Pérez</p>
+                                    <p><strong>Cliente:</strong> Carlos Gómez</p>
+                                    <p><strong>Método:</strong> Efectivo</p>
+                                    <p><strong>Estado:</strong> Pendiente</p>
+                                    <p><strong>Total:</strong> 750.00 Bs</p>
+                                </div>
+                                <button class="btn-ver-mas" aria-label="Ver más información del pedido 002">Ver más info</button>
+                            </article>
+                            <article class="pedido" data-vendedor="María Gómez" data-pedido="003" data-cliente="Lucía Fernández" data-metodo="QR" data-estado="Completado">
+                                <div class="pedido-info">
+                                    <h3>Pedido #003</h3>
+                                    <p><strong>Vendedor:</strong> María Gómez</p>
+                                    <p><strong>Cliente:</strong> Lucía Fernández</p>
+                                    <p><strong>Método:</strong> QR</p>
+                                    <p><strong>Estado:</strong> Completado</p>
+                                    <p><strong>Total:</strong> 920.00 Bs</p>
+                                </div>
+                                <button class="btn-ver-mas" aria-label="Ver más información del pedido 003">Ver más info</button>
+                            </article>
+                            <article class="pedido" data-vendedor="Carlos López" data-pedido="004" data-cliente="Sofía Ramírez" data-metodo="Efectivo" data-estado="Pendiente">
+                                <div class="pedido-info">
+                                    <h3>Pedido #004</h3>
+                                    <p><strong>Vendedor:</strong> Carlos López</p>
+                                    <p><strong>Cliente:</strong> Sofía Ramírez</p>
+                                    <p><strong>Método:</strong> Efectivo</p>
+                                    <p><strong>Estado:</strong> Pendiente</p>
+                                    <p><strong>Total:</strong> 600.00 Bs</p>
+                                </div>
+                                <button class="btn-ver-mas" aria-label="Ver más información del pedido 004">Ver más info</button>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="turnos scroll-view">
+                        <h2>Turnos Trabajados</h2>
+                        <div class="turnos-botones">
+                            <button id="btn-manana" class="btn-turno active" aria-pressed="true">Turno Mañana</button>
+                            <button id="btn-tarde" class="btn-turno" aria-pressed="false">Turno Tarde</button>
+                        </div>
+                        <div id="turnos-lista">
+                            <div class="login-entrada turno-manana">
+                                <p><strong>Ana Martínez</strong></p>
+                                <p>Entrada: 08:00 - Salida: 12:00</p>
+                            </div>
+                            <div class="login-entrada turno-manana">
+                                <p><strong>Juan Pérez</strong></p>
+                                <p>Entrada: 09:00 - Salida: 13:00</p>
+                            </div>
+                            <div class="login-entrada turno-manana">
+                                <p><strong>Lucía Fernández</strong></p>
+                                <p>Entrada: 08:30 - Salida: 12:30</p>
+                            </div>
+                            <div class="login-entrada turno-manana">
+                                <p><strong>Sofía Ramírez</strong></p>
+                                <p>Entrada: 07:45 - Salida: 11:45</p>
+                            </div>
+                            <div class="login-entrada turno-tarde" style="display: none;">
+                                <p><strong>María Gómez</strong></p>
+                                <p>Entrada: 14:00 - Salida: 18:00</p>
+                            </div>
+                            <div class="login-entrada turno-tarde" style="display: none;">
+                                <p><strong>Carlos López</strong></p>
+                                <p>Entrada: 15:00 - Salida: 19:00</p>
+                            </div>
+                            <div class="login-entrada turno-tarde" style="display: none;">
+                                <p><strong>Pedro Sánchez</strong></p>
+                                <p>Entrada: 13:30 - Salida: 17:30</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="derecha">
+                    <div class="usuario-info caja">
+                        <h2>Usuario</h2>
+                        <p><strong>Usuario:</strong> No iniciado</p>
+                        <p><strong>Rol:</strong> N/A</p>
+                        <p><a href="login.html" class="login-link">Iniciar Sesión</a></p>
+                    </div>
+                    <div class="agregar-producto caja">
+                        <h2>Agregar Producto</h2>
+                        <button class="btn-agregar-producto" aria-label="Agregar nuevo producto">Agregar</button>
+                    </div>
+                    <div class="ajustar-precio caja">
+                        <h2>Ajustar Precio</h2>
+                        <button class="btn-ajustar-precio" aria-label="Ajustar precios de productos">Ajustar</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 ModaTrend. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

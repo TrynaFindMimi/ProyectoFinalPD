@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas - ModaTrend</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/verReservas.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>ModaTrend</h1>
+            <nav aria-label="Navegación principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="crearVenta.html">Crear Venta</a></li>
+                    <li><a href="verReservas.html" class="active">Reservas</a></li>
+                    <li><a href="envios.html">Envíos</a></li>
+                    <li><button type="button" id="login-btn" aria-label="Iniciar sesión">Iniciar Sesión</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="reservas-container">
+            <h1>Reservas</h1>
+            <div class="filtro-reservas">
+                <label for="filtro-estado">Filtrar por estado:</label>
+                <select id="filtro-estado" aria-label="Filtrar reservas por estado">
+                    <option value="todas">Todas</option>
+                    <option value="pendiente">Pago Pendiente</option>
+                    <option value="anticipo">Con Anticipo</option>
+                    <option value="pagado">Pagado</option>
+                </select>
+                <input type="search" id="buscar-reserva" placeholder="Buscar por número o cliente" aria-label="Buscar reservas">
+            </div>
+
+            <div class="lista-reservas scroll-view">
+                <section class="reservas-pendientes" aria-labelledby="pendientes-titulo">
+                    <h2 id="pendientes-titulo">Pago Pendiente</h2>
+                    <article class="reserva" data-numero="001" data-fecha="2023-10-01" data-saldo="300.00" data-total="880.00" data-anticipo="580.00" data-tipo-anticipo="QR" data-destino="Envío" data-registrador="Ana Pérez" data-cliente="María López">
+                        <div class="reserva-info">
+                            <h3>Reserva #001</h3>
+                            <p><strong>Fecha:</strong> 01/10/2023</p>
+                            <p><strong>Cliente:</strong> María López</p>
+                            <p><strong>Registrador:</strong> Ana Pérez</p>
+                            <p><strong>Anticipo:</strong> 580.00 Bs (QR)</p>
+                            <p><strong>Destino:</strong> Envío</p>
+                            <p><strong>Saldo Pendiente:</strong> 300.00 Bs</p>
+                            <p><strong>Total:</strong> 880.00 Bs</p>
+                        </div>
+                        <div class="reserva-acciones">
+                            <button class="btn-pagar-saldo" onclick="abrirModalPagoSaldo('001')">Pagar Saldo</button>
+                            <button class="btn-detalles" onclick="mostrarDetalles('001')">Ver Detalles</button>
+                        </div>
+                    </article>
+                    <article class="reserva" data-numero="002" data-fecha="2023-10-02" data-saldo="150.00" data-total="750.00" data-anticipo="600.00" data-tipo-anticipo="Efectivo" data-destino="Tienda" data-registrador="Luis Gómez" data-cliente="Sofía Martínez">
+                        <div class="reserva-info">
+                            <h3>Reserva #002</h3>
+                            <p><strong>Fecha:</strong> 02/10/2023</p>
+                            <p><strong>Cliente:</strong> Sofía Martínez</p>
+                            <p><strong>Registrador:</strong> Luis Gómez</p>
+                            <p><strong>Anticipo:</strong> 600.00 Bs (Efectivo)</p>
+                            <p><strong>Destino:</strong> Tienda</p>
+                            <p><strong>Saldo Pendiente:</strong> 150.00 Bs</p>
+                            <p><strong>Total:</strong> 750.00 Bs</p>
+                        </div>
+                        <div class="reserva-acciones">
+                            <button class="btn-pagar-saldo" onclick="abrirModalPagoSaldo('002')">Pagar Saldo</button>
+                            <button class="btn-detalles" onclick="mostrarDetalles('002')">Ver Detalles</button>
+                        </div>
+                    </article>
+                </section>
+
+                <section class="reservas-pagadas" aria-labelledby="pagadas-titulo">
+                    <h2 id="pagadas-titulo">Pagado</h2>
+                    <article class="reserva" data-numero="003" data-fecha="2023-10-03" data-saldo="0.00" data-total="920.00" data-anticipo="920.00" data-tipo-anticipo="QR" data-destino="Envío" data-registrador="Carla Díaz" data-cliente="Laura Sánchez">
+                        <div class="reserva-info">
+                            <h3>Reserva #003</h3>
+                            <p><strong>Fecha:</strong> 03/10/2023</p>
+                            <p><strong>Cliente:</strong> Laura Sánchez</p>
+                            <p><strong>Registrador:</strong> Carla Díaz</p>
+                            <p><strong>Anticipo:</strong> 920.00 Bs (QR)</p>
+                            <p><strong>Destino:</strong> Envío</p>
+                            <p><strong>Saldo Pendiente:</strong> 0.00 Bs</p>
+                            <p><strong>Total:</strong> 920.00 Bs</p>
+                        </div>
+                        <div class="reserva-acciones">
+                            <button class="btn-pagar-saldo" disabled>Pagado</button>
+                            <button class="btn-detalles" onclick="mostrarDetalles('003')">Ver Detalles</button>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+
+        <div id="modal-pago-saldo" class="modal" role="dialog" aria-labelledby="modal-pago-titulo">
+            <div class="modal-content">
+                <span class="close" onclick="cerrarModalPagoSaldo()" aria-label="Cerrar modal">×</span>
+                <h2 id="modal-pago-titulo">Pagar Saldo - Reserva #<span id="numero-reserva"></span></h2>
+                <p><strong>Cliente:</strong> <span id="cliente-reserva"></span></p>
+                <p><strong>Saldo Pendiente:</strong> <span id="saldo-pendiente"></span> Bs</p>
+                <div class="opciones-pago">
+                    <button type="button" class="btn-pago-qr" onclick="pagarSaldoConQR()">Pagar con QR</button>
+                    <button type="button" class="btn-pago-efectivo" onclick="pagarSaldoEnEfectivo()">Pagar en Efectivo</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-detalles" class="modal" role="dialog" aria-labelledby="modal-detalles-titulo">
+            <div class="modal-content scroll-view">
+                <span class="close" onclick="cerrarModalDetalles()" aria-label="Cerrar modal">×</span>
+                <h2 id="modal-detalles-titulo">Detalles de Reserva #<span id="detalle-numero-reserva"></span></h2>
+                <div id="detalle-info">
+                    <p><strong>Cliente:</strong> <span id="detalle-cliente"></span></p>
+                    <p><strong>Registrador:</strong> <span id="detalle-registrador"></span></p>
+                    <p><strong>Fecha:</strong> <span id="detalle-fecha"></span></p>
+                    <p><strong>Productos:</strong></p>
+                    <ul id="detalle-productos">
+                        <li>Labubu Coca-Cola - 300.00 Bs</li>
+                        <li>Mokoko - 250.00 Bs</li>
+                    </ul>
+                    <p><strong>Anticipo:</strong> <span id="detalle-anticipo"></span></p>
+                    <p><strong>Destino:</strong> <span id="detalle-destino"></span></p>
+                    <p><strong>Saldo Pendiente:</strong> <span id="detalle-saldo"></span></p>
+                    <p><strong>Total:</strong> <span id="detalle-total"></span></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 ModaTrend. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/verReservas.js"></script>
+</body>
+</html>
+```

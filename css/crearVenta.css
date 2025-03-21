@@ -1,0 +1,362 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFF5F7;
+    color: #2D1B2A;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #FFFFFF;
+    padding: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #F28CAB;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav ul li a {
+    color: #2D1B2A;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #F28CAB;
+}
+
+#login-btn {
+    background-color: #F28CAB;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#login-btn:hover {
+    background-color: #E06B8A;
+    transform: translateY(-3px);
+}
+
+.crear-venta-container {
+    max-width: 1280px;
+    margin: 50px auto;
+    padding: 0 30px;
+}
+
+.crear-venta-container h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #2D1B2A;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.contenedor-principal {
+    display: flex;
+    gap: 30px;
+}
+
+.lista-productos.scroll-view {
+    flex: 2;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: #F28CAB #FFF5F7;
+}
+
+.producto-carrito {
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto-carrito:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(242, 140, 171, 0.2);
+}
+
+.producto-carrito img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.producto-info {
+    flex-grow: 1;
+}
+
+.producto-info h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #2D1B2A;
+    font-weight: 600;
+}
+
+.producto-info p {
+    margin: 8px 0;
+    color: #5C3D4A;
+    font-size: 14px;
+}
+
+.eliminar {
+    background-color: #F28CAB;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.eliminar:hover {
+    background-color: #E06B8A;
+    transform: translateY(-3px);
+}
+
+.resumen-venta {
+    flex: 1;
+    background-color: #FFFFFF;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.resumen-venta h2 {
+    margin-top: 0;
+    font-size: 28px;
+    color: #2D1B2A;
+    font-weight: 600;
+}
+
+.resumen-venta p {
+    margin: 15px 0;
+    font-size: 18px;
+    color: #5C3D4A;
+}
+
+.resumen-venta .total {
+    font-size: 22px;
+    font-weight: bold;
+    color: #F28CAB;
+}
+
+.acciones-venta {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-realizar-venta, .btn-realizar-reserva {
+    background-color: #F28CAB;
+    color: #FFFFFF;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-realizar-venta:hover, .btn-realizar-reserva:hover {
+    background-color: #E06B8A;
+    transform: translateY(-3px);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #FFFFFF;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content.scroll-view {
+    max-height: 70vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #F28CAB #FFF5F7;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    font-size: 28px;
+    color: #2D1B2A;
+    font-weight: 600;
+}
+
+.opciones-pago {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-pago-qr, .btn-pago-efectivo {
+    background-color: #F28CAB;
+    color: #FFFFFF;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-pago-qr:hover, .btn-pago-efectivo:hover {
+    background-color: #E06B8A;
+    transform: translateY(-3px);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #2D1B2A;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: #2D1B2A;
+    color: #FFFFFF;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-group .required {
+    color: #F28CAB;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-group input[readonly] {
+    background-color: #f5f5f5;
+}
+
+.opciones-reserva {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-confirmar-reserva,
+.btn-cancelar {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-confirmar-reserva {
+    background-color: #F28CAB;
+    color: #fff;
+}
+
+.btn-confirmar-reserva:hover {
+    background-color: #E06B8A;
+}
+
+.btn-cancelar {
+    background-color: #ccc;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .contenedor-principal {
+        flex-direction: column;
+    }
+
+    .lista-productos.scroll-view {
+        max-height: none;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+}

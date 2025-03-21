@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Venta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/crearVenta.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>ModaTrend</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="crearVenta.html">Crear Venta</a></li>
+                    <li><a href="verReservas.html">Reservas</a></li>
+                    <li><a href="envios.html">Envíos</a></li>
+                    <li><button id="login-btn" onclick="window.location.href='admin.html'">Iniciar Sesión</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="crear-venta-container">
+            <h1>Crear Venta</h1>
+            <div class="contenedor-principal">
+                <section class="lista-productos scroll-view">
+                    <div class="producto-carrito">
+                        <img src="images/producto1.png" alt="Labubu Coca-Cola">
+                        <div class="producto-info">
+                            <h3>Labubu Coca-Cola</h3>
+                            <p>Edición especial en colaboración con Coca-Cola. Un diseño único para coleccionistas.</p>
+                            <p class="precio">300.00 Bs</p>
+                        </div>
+                        <button class="eliminar" aria-label="Eliminar producto">Eliminar</button>
+                    </div>
+                    <div class="producto-carrito">
+                        <img src="images/producto2.png" alt="Mokoko">
+                        <div class="producto-info">
+                            <h3>Mokoko</h3>
+                            <p>Diseño inspirado en la naturaleza, perfecto para amantes de los detalles únicos.</p>
+                            <p class="precio">250.00 Bs</p>
+                        </div>
+                        <button class="eliminar" aria-label="Eliminar producto">Eliminar</button>
+                    </div>
+                    <div class="producto-carrito">
+                        <img src="images/producto3.png" alt="Labubu Sitting Surprise">
+                        <div class="producto-info">
+                            <h3>Labubu Sitting Surprise</h3>
+                            <p>Una figura sentada con gestos divertidos, ideal para alegrar cualquier espacio.</p>
+                            <p class="precio">280.00 Bs</p>
+                        </div>
+                        <button class="eliminar" aria-label="Eliminar producto">Eliminar</button>
+                    </div>
+                    <div class="producto-carrito">
+                        <img src="images/producto4.png" alt="Labubu Edición Limitada">
+                        <div class="producto-info">
+                            <h3>Labubu Edición Limitada</h3>
+                            <p>Figura exclusiva con detalles únicos, solo disponible por tiempo limitado.</p>
+                            <p class="precio">350.00 Bs</p>
+                        </div>
+                        <button class="eliminar" aria-label="Eliminar producto">Eliminar</button>
+                    </div>
+                    <div class="producto-carrito">
+                        <img src="images/producto5.png" alt="Mokoko Floral">
+                        <div class="producto-info">
+                            <h3>Mokoko Floral</h3>
+                            <p>Diseño floral vibrante, perfecto para agregar un toque de color a tu colección.</p>
+                            <p class="precio">270.00 Bs</p>
+                        </div>
+                        <button class="eliminar" aria-label="Eliminar producto">Eliminar</button>
+                    </div>
+                    <div class="producto-carrito">
+                        <img src="images/producto6.png" alt="Labubu Mini">
+                        <div class="producto-info">
+                            <h3>Labubu Mini</h3>
+                            <p>Versión mini de Labubu, ideal para llevar a todas partes.</p>
+                            <p class="precio">150.00 Bs</p>
+                        </div>
+                        <button class="eliminar" aria-label="Eliminar producto">Eliminar</button>
+                    </div>
+                </section>
+
+                <aside class="resumen-venta scroll-view">
+                    <h2>Resumen de la Venta</h2>
+                    <p>Subtotal: <span class="subtotal">830.00 Bs</span></p>
+                    <p>Envío: <span class="envio">50.00 Bs</span></p>
+                    <p class="total">Total: <span>880.00 Bs</span></p>
+                    <div class="acciones-venta">
+                        <button class="btn-realizar-venta" onclick="abrirModalPago()">Realizar Venta</button>
+                        <button class="btn-realizar-reserva" onclick="abrirModalReserva()">Realizar Reserva</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <div id="modal-pago" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="cerrarModalPago()">×</span>
+                <h2>Seleccione el Método de Pago</h2>
+                <div class="opciones-pago">
+                    <button class="btn-pago-qr" onclick="pagarConQR()">Pagar con QR</button>
+                    <button class="btn-pago-efectivo" onclick="pagarEnEfectivo()">Pagar en Efectivo</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-reserva" class="modal">
+            <div class="modal-content scroll-view">
+                <span class="close" onclick="cerrarModalReserva()">×</span>
+                <h2>Registrar Reserva</h2>
+                <form id="reserva-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo <span class="required">*</span></label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="saldo-total">Saldo Total</label>
+                        <input type="text" id="saldo-total" value="880.00 Bs" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="ci">Número de CI (Opcional)</label>
+                        <input type="text" id="ci" name="ci">
+                    </div>
+                    <div class="form-group">
+                        <label for="departamento">Departamento (Opcional)</label>
+                        <select id="departamento" name="departamento">
+                            <option value="">Seleccione un departamento</option>
+                            <option value="La Paz">La Paz</option>
+                            <option value="Cochabamba">Cochabamba</option>
+                            <option value="Santa Cruz">Santa Cruz</option>
+                            <option value="Oruro">Oruro</option>
+                            <option value="Potosí">Potosí</option>
+                            <option value="Chuquisaca">Chuquisaca</option>
+                            <option value="Tarija">Tarija</option>
+                            <option value="Pando">Pando</option>
+                            <option value="Beni">Beni</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="anticipo">Anticipo (Opcional)</label>
+                        <input type="number" id="anticipo" name="anticipo" min="0" step="0.01" placeholder="Ingrese monto en Bs">
+                    </div>
+                    <div class="opciones-reserva">
+                        <button type="submit" class="btn-confirmar-reserva" onclick="registrarReserva('pendiente')">Registrar como Pago Pendiente</button>
+                        <button type="submit" class="btn-confirmar-reserva" onclick="registrarReserva('anticipo')">Registrar con Anticipo</button>
+                        <button type="button" class="btn-cancelar" onclick="cerrarModalReserva()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Proyecto E-commerce. Todos los derechos reservados.</p>
+    </footer>
+    <script src="js/crearVenta.js"></script>
+</body>
+</html>

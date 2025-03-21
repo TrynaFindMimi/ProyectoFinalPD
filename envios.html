@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envíos - Mi Tienda Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/envios.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>ModaTrend</h1>
+            <nav>
+              <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="crearVenta.html">Crear Venta</a></li>
+                <li><a href="verReservas.html">Reservas</a></li>
+                <li><a href="envios.html">Envíos</a></li>
+                <li><button id="login-btn" onclick="window.location.href='admin.html'">Iniciar Sesión</button></li>
+              </ul>
+            </nav>
+          </div>
+    </header>
+    <main>
+        <div class="envios-container">
+            <div class="header-envios">
+                <h1>Envíos</h1>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="por-enviar">Por Enviar</button>
+                    <button class="tab-btn" data-tab="enviados">Enviados</button>
+                </div>
+            </div>
+            <div class="lista-envios">
+                <div id="por-enviar" class="tab-content active">
+                    <div class="envio" data-estado="sin-enviar">
+                        <div class="envio-info">
+                            <h3>Envío #002</h3>
+                            <p><strong>Cliente:</strong> María Gómez</p>
+                            <p><strong>Dirección:</strong> Avenida Siempre Viva 456, Ciudad, País</p>
+                            <p><strong>Estado:</strong> <span class="estado sin-enviar">Sin Enviar</span></p>
+                        </div>
+                        <div class="productos-envio">
+                            <h4>Productos:</h4>
+                            <ul>
+                                <li>Labubu Sitting Surprise - 1 unidad</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cambiar-estado">Marcar como Enviado</button>
+                    </div>
+                </div>
+                <div id="enviados" class="tab-content">
+                    <div class="envio" data-estado="enviado">
+                        <div class="envio-info">
+                            <h3>Envío #001</h3>
+                            <p><strong>Cliente:</strong> Juan Pérez</p>
+                            <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
+                            <p><strong>Estado:</strong> <span class="estado enviado">Enviado</span></p>
+                        </div>
+                        <div class="productos-envio">
+                            <h4>Productos:</h4>
+                            <ul>
+                                <li>Labubu Coca-Cola - 1 unidad</li>
+                                <li>Mokoko - 2 unidades</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cambiar-estado">Marcar como Sin Enviar</button>
+                    </div>
+                    <div class="envio" data-estado="enviado">
+                        <div class="envio-info">
+                            <h3>Envío #003</h3>
+                            <p><strong>Cliente:</strong> Carlos López</p>
+                            <p><strong>Dirección:</strong> Calle Principal 789, Ciudad, País</p>
+                            <p><strong>Estado:</strong> <span class="estado enviado">Enviado</span></p>
+                        </div>
+                        <div class="productos-envio">
+                            <h4>Productos:</h4>
+                            <ul>
+                                <li>Labubu Coca-Cola - 2 unidades</li>
+                                <li>Mokoko - 1 unidad</li>
+                            </ul>
+                        </div>
+                        <button class="btn-cambiar-estado">Marcar como Sin Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 Proyecto E-commerce. Todos los derechos reservados.</p>
+    </footer>
+    <script src="js/envios.js"></script>
+</body>
+</html>
