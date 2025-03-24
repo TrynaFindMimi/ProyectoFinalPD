@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de Ropa - ModaTrend</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>ModaTrend</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="crearVenta.html">Crear Venta</a></li>
+          <li><a href="verReservas.html">Reservas</a></li>
+          <li><a href="envios.html">Envíos</a></li>
+          <li><button id="login-btn" onclick="window.location.href='admin.html'">Iniciar Sesión</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Bienvenido a ModaTrend</h2>
+        <p>Descubre las últimas tendencias en ropa y accesorios para mujeres.</p>
+        <a href="#productos" class="btn">Explorar Colección</a>
+      </div>
+    </section>
+    <section id="productos" class="product-list">
+      <h2>Nuestra Colección</h2>
+      <div class="filter-bar">
+        <input type="text" id="search-input" placeholder="Buscar ropa...">
+        <select id="brand-filter">
+          <option value="">Marca</option>
+          <option value="forever21">Forever 21</option>
+          <option value="macys">Macy's</option>
+          <option value="claires">Claire's</option>
+          <option value="windsor">Windsor</option>
+        </select>
+        <select id="type-filter">
+          <option value="">Categoría</option>
+          <option value="vestido">Vestido</option>
+          <option value="blusa">Blusa</option>
+          <option value="accesorio">Accesorio</option>
+          <option value="falda">Falda</option>
+          <option value="chaqueta">Chaqueta</option>
+        </select>
+      </div>
+      <div class="product-grid">
+      
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 ModaTrend. Todos los derechos reservados.</p>
+      <ul class="footer-links">
+        <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+        <li><a href="terminos.html">Términos y Condiciones</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script src="js/index.js"></script>
+</body>
+</html>
